@@ -96,12 +96,16 @@ class taskGenerator {
       if (this.status === "Done") {
         this.status = "Doing";
         taskContainer.dataset.status = "Doing";
+        containerDoing.appendChild(taskContainer);
+        containerToDo.removeChild(taskContainer);
         localStorage.setItem(this.value, "Doing");
         retrieveAndRender();
 
       } else if (this.status === "Doing") {
         this.status = "To do";
         taskContainer.dataset.status = "To do";
+        containerToDo.appendChild(taskContainer);
+        containerDoing.removeChild(taskContainer);
         localStorage.setItem(this.value, "To do");
         retrieveAndRender();
       }
@@ -111,14 +115,18 @@ class taskGenerator {
       console.log("azul")
 
       if (this.status === "To do") {
-        this.status = "Doing";
+        this.statys = "Doing"
         taskContainer.dataset.status = "Doing";
+        containerDoing.appendChild(taskContainer);
+        containerToDo.removeChild(taskContainer);
         localStorage.setItem(this.value, "Doing");
         retrieveAndRender();
 
       } else if (this.status === "Doing") {
         this.status = "Done";
         taskContainer.dataset.status = "Done";
+        containerDone.appendChild(taskContainer);
+        containerDoing.removeChild(taskContainer);
         localStorage.setItem(this.value, "Done");
         retrieveAndRender();
       }
@@ -129,7 +137,7 @@ class taskGenerator {
       console.log("BANHAMMER!!!!!")
       localStorage.removeItem(this.value)
       localStorage.removeItem(this.status)
-      retrieveAndRender();
+      taskContainer.remove();
     });
 
   }
