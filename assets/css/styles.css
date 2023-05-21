@@ -12,17 +12,70 @@
     font-size: 60px;
 }
 
-.containerToDo{
-    height: 50px;
-    width: 50px;
-    background-color: blue;
-};
+.containerToDo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    gap: 10px;
+    padding: 20px;
+    margin: 20px;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: none;
+  }
+
 .containerDoing{    
-    height: 50px;
-    width: 50px;
-    background-color: blue;}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    gap: 10px;
+    padding: 20px;
+    margin: 20px;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: none;
+}
 
 .containerDone{    
-    height: 50px;
-    width: 50px;
-    background-color: blue;}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    gap: 10px;
+    padding: 20px;
+    margin: 20px;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.taskContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    margin: 20px;
+    background-color: #312e2e;
+    color:white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.containerPaLosContainers{
+    display: flex;
+    flex-direction: row;
+}
+
+.botonRojito{
+
+}
+
+.botonAzulito{
+
+}

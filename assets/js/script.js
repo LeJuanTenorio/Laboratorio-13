@@ -23,30 +23,76 @@ const storeLocally = (event) => {
    
 };
 
-const retrieveInfo = () => {
+const retrieveAndRender = () => {
+
   const retrieveLocalStorageKey = Object.keys(localStorage);
   const retrieveLocalStorageStatus = Object.values(localStorage);
   console.log(retrieveLocalStorageKey);
   console.log(retrieveLocalStorageStatus);
+
+  for (let key of retrieveLocalStorageKey) {
+    const value = key;
+    const status = localStorage.getItem(value);
+
+    const task = new taskGenerator(value, status);
+    task.render();
+  }
+  
 };
 
-const renderLists = () => {
-    
-};
-
-const statusContainer = (container) => {
-    if (container.innerHTML.trim() === "") {
-        container.style.display = "none";
-} else {
+const statusContainer = (container, event) => {
+  event.preventDefault();
+  if (container.innerHTML.trim() === "") {
+    container.style.display = "none";
+  } else {
     container.style.display = "block";
-}}
+  }
+};
 
 const statusChanger = () => {
+
+  //Status is stored in localstorage value. The status can be "To do", "Doing" and "Done"
+
 }
 
-textbox.addEventListener("submit", () => statusContainer(containerToDo));
-textbox.addEventListener("submit", () => statusContainer(containerDoing));
-textbox.addEventListener("submit", () => statusContainer(containerDone));
+class taskGenerator {
+  value = "";
+  status = "";
+
+  constructor(value, status) {
+    this.value = value;
+    this.status = status;
+  }
+
+  render() {
+    const taskContainer = document.createElement("div");
+    taskContainer.className = "taskContainer";
+    taskContainer.id = this.status;
+    
+    const taskText = document.createElement("p");
+    taskText.textContent = this.value;
+    taskContainer.appendChild(taskText);
+
+
+    if (this.status === "To do") {
+      console.log("To do");
+      containerToDo.appendChild(taskContainer);
+    } else if (this.status === "Doing") {
+      console.log("Doing");
+      containerDoing.appendChild(taskContainer);
+    } else {
+      console.log("Done");
+      containerDone.appendChild(taskContainer);
+    }
+  }
+}
+
+
+
 
 textbox.addEventListener("submit", storeLocally);
-textbox.addEventListener("submit", retrieveInfo);
+textbox.addEventListener("submit", retrieveAndRender);
+
+textbox.addEventListener("submit", (event) => statusContainer(containerToDo, event));
+textbox.addEventListener("submit", (event) => statusContainer(containerDoing, event));
+textbox.addEventListener("submit", (event) => statusContainer(containerDone, event));
