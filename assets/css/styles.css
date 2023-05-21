@@ -11,3 +11,18 @@
     width: 100%;
     font-size: 60px;
 }
+
+.containerToDo{
+    height: 50px;
+    width: 50px;
+    background-color: blue;
+};
+.containerDoing{    
+    height: 50px;
+    width: 50px;
+    background-color: blue;}
+
+.containerDone{    
+    height: 50px;
+    width: 50px;
+    background-color: blue;}

@@ -44,9 +44,9 @@ const statusContainer = (container) => {
 const statusChanger = () => {
 }
 
-textbox.addEventListener("submit", statusContainer(containerToDo));
-textbox.addEventListener("submit", statusContainer(containerDoing));
-textbox.addEventListener("submit", statusContainer(containerDone));
+textbox.addEventListener("submit", () => statusContainer(containerToDo));
+textbox.addEventListener("submit", () => statusContainer(containerDoing));
+textbox.addEventListener("submit", () => statusContainer(containerDone));
 
 textbox.addEventListener("submit", storeLocally);
 textbox.addEventListener("submit", retrieveInfo);
