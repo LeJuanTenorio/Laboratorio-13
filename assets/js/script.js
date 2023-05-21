@@ -23,7 +23,13 @@ const storeLocally = (event) => {
    
 };
 
+
+
 const retrieveAndRender = () => {
+
+  containerToDo.innerHTML = ""
+  containerDoing.innerHTML = ""
+  containerDone.innerHTML = ""
 
   const retrieveLocalStorageKey = Object.keys(localStorage);
   const retrieveLocalStorageStatus = Object.values(localStorage);
@@ -91,43 +97,25 @@ class taskGenerator {
     }
 
     rojitoButton.addEventListener("click", () => {
-      console.log("rojo");
-
       if (this.status === "Done") {
         this.status = "Doing";
-        taskContainer.dataset.status = "Doing";
-        containerDoing.appendChild(taskContainer);
-        containerToDo.removeChild(taskContainer);
-        localStorage.setItem(this.value, "Doing");
+        localStorage.setItem(this.value, this.status);
         retrieveAndRender();
-
       } else if (this.status === "Doing") {
         this.status = "To do";
-        taskContainer.dataset.status = "To do";
-        containerToDo.appendChild(taskContainer);
-        containerDoing.removeChild(taskContainer);
-        localStorage.setItem(this.value, "To do");
+        localStorage.setItem(this.value, this.status);
         retrieveAndRender();
       }
-    })
+    });
 
     azulitoButton.addEventListener("click", () => {
-      console.log("azul")
-
       if (this.status === "To do") {
-        this.statys = "Doing"
-        taskContainer.dataset.status = "Doing";
-        containerDoing.appendChild(taskContainer);
-        containerToDo.removeChild(taskContainer);
-        localStorage.setItem(this.value, "Doing");
+        this.status = "Doing";
+        localStorage.setItem(this.value, this.status);
         retrieveAndRender();
-
       } else if (this.status === "Doing") {
         this.status = "Done";
-        taskContainer.dataset.status = "Done";
-        containerDone.appendChild(taskContainer);
-        containerDoing.removeChild(taskContainer);
-        localStorage.setItem(this.value, "Done");
+        localStorage.setItem(this.value, this.status);
         retrieveAndRender();
       }
 
