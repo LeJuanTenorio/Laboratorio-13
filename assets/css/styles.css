@@ -4,13 +4,19 @@
     box-sizing: border-box;
   }
 
-.title{
-    display:flex;
-    background-color:red;
-    height: 10%;
+  .title {
+    display: flex;
+    align-items: center;
+    background-color: #337ab7;
+    height: 80px;
     width: 100%;
-    font-size: 60px;
-}
+    font-size: 36px;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 2px solid #cccccc;
+    font-family: "Roboto", sans-serif;
+  }
 
 .containerToDo {
     display: flex;
@@ -73,9 +79,21 @@
 }
 
 .botonRojito{
-
+    width: 20px;
+    height: 20px;
+    background-color: red;
 }
 
 .botonAzulito{
-
+    width: 20px;
+    height: 20px;
+    background-color: blue;
 }
+
+.delete{
+    background-color: #000000;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+  }

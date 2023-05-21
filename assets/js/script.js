@@ -41,19 +41,13 @@ const retrieveAndRender = () => {
 };
 
 const statusContainer = (container, event) => {
-  event.preventDefault();
+
   if (container.innerHTML.trim() === "") {
     container.style.display = "none";
   } else {
     container.style.display = "block";
   }
 };
-
-const statusChanger = () => {
-
-  //Status is stored in localstorage value. The status can be "To do", "Doing" and "Done"
-
-}
 
 class taskGenerator {
   value = "";
@@ -73,6 +67,17 @@ class taskGenerator {
     taskText.textContent = this.value;
     taskContainer.appendChild(taskText);
 
+    const rojitoButton = document.createElement("button");
+    rojitoButton.className = "botonRojito";
+    taskContainer.appendChild(rojitoButton);
+
+    const azulitoButton = document.createElement("button");
+    azulitoButton.className = "botonAzulito";
+    taskContainer.appendChild(azulitoButton);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "delete";
+    taskContainer.appendChild(deleteButton);
 
     if (this.status === "To do") {
       console.log("To do");
@@ -84,11 +89,60 @@ class taskGenerator {
       console.log("Done");
       containerDone.appendChild(taskContainer);
     }
+
+    rojitoButton.addEventListener("click", () => {
+      console.log("rojo");
+
+      if (this.status === "Done") {
+        this.status = "Doing";
+        taskContainer.dataset.status = "Doing";
+        localStorage.setItem(this.value, "Doing");
+        retrieveAndRender();
+
+      } else if (this.status === "Doing") {
+        this.status = "To do";
+        taskContainer.dataset.status = "To do";
+        localStorage.setItem(this.value, "To do");
+        retrieveAndRender();
+      }
+    })
+
+    azulitoButton.addEventListener("click", () => {
+      console.log("azul")
+
+      if (this.status === "To do") {
+        this.status = "Doing";
+        taskContainer.dataset.status = "Doing";
+        localStorage.setItem(this.value, "Doing");
+        retrieveAndRender();
+
+      } else if (this.status === "Doing") {
+        this.status = "Done";
+        taskContainer.dataset.status = "Done";
+        localStorage.setItem(this.value, "Done");
+        retrieveAndRender();
+      }
+
+    });
+
+    deleteButton.addEventListener("click", () => {
+      console.log("BANHAMMER!!!!!")
+      localStorage.removeItem(this.value)
+      localStorage.removeItem(this.status)
+      retrieveAndRender();
+    });
+
   }
 }
 
 
 
+window.onload = () => {
+  retrieveAndRender();
+  statusContainer(containerToDo);
+  statusContainer(containerDoing);
+  statusContainer(containerDone);
+};
 
 textbox.addEventListener("submit", storeLocally);
 textbox.addEventListener("submit", retrieveAndRender);
