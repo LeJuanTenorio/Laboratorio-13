@@ -1,6 +1,7 @@
 const textbox = document.querySelector(".textbox");
-
-let keyNum = 1;
+const containerToDo = document.querySelector(".containerToDo");
+const containerDoing = document.querySelector(".containerDoing");
+const containerDone = document.querySelector(".containerDone");
 
 const stringifyThis = (x) =>{
     JSON.stringify(x);
@@ -16,18 +17,36 @@ const storeLocally = (event) => {
   const input = document.querySelector(".writtenTask");
 
   const status = "To do"
-  
-  keyNum++;
 
   localStorage.setItem(input.value, status);
 
    
 };
 
-const showList = () => {
-  const retrieveLocalStorage = Object.keys(localStorage);
-  console.log(retrieveLocalStorage);
+const retrieveInfo = () => {
+  const retrieveLocalStorageKey = Object.keys(localStorage);
+  const retrieveLocalStorageStatus = Object.values(localStorage);
+  console.log(retrieveLocalStorageKey);
+  console.log(retrieveLocalStorageStatus);
 };
 
+const renderLists = () => {
+    
+};
+
+const statusContainer = (container) => {
+    if (container.innerHTML.trim() === "") {
+        container.style.display = "none";
+} else {
+    container.style.display = "block";
+}}
+
+const statusChanger = () => {
+}
+
+textbox.addEventListener("submit", statusContainer(containerToDo));
+textbox.addEventListener("submit", statusContainer(containerDoing));
+textbox.addEventListener("submit", statusContainer(containerDone));
+
 textbox.addEventListener("submit", storeLocally);
-textbox.addEventListener("submit", showList);
+textbox.addEventListener("submit", retrieveInfo);
