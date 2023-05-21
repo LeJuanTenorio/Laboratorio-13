@@ -1,0 +1,13 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+
+.title{
+    display:flex;
+    background-color:red;
+    height: 10%;
+    width: 100%;
+    font-size: 60px;
+}
